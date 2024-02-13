@@ -5,10 +5,10 @@ RUN apt-get update && apt-get -y install curl gpg
 RUN curl -fsSL https://falco.org/repo/falcosecurity-packages.asc | \
   gpg --dearmor -o /usr/share/keyrings/falco-archive-keyring.gpg
 
-RUN echo "deb [signed-by=/usr/share/keyrings/falco-archive-keyring.gpg] https://download.falco.org/packages/deb-dev stable main" | tee -a /etc/apt/sources.list.d/falcosecurity.list
+RUN echo "deb [signed-by=/usr/share/keyrings/falco-archive-keyring.gpg] https://download.falco.org/packages/deb stable main" | tee -a /etc/apt/sources.list.d/falcosecurity.list
 
 RUN apt-get update -y
 
 RUN FALCO_FRONTEND=noninteractive apt-get install -y falco
 
-RUN falco --help
+RUN falco --version
